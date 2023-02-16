@@ -12,7 +12,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div className="containerWrapper navbar flex justify-between bg-base-100">
+    <div className="containerWrapper navbar fixed z-10 flex justify-between bg-base-100">
       <a className="btn-ghost btn text-xl normal-case">NightChat</a>
       {currentUser ? (
         <button className="btn" onClick={handleClick}>

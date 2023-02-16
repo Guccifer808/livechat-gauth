@@ -33,8 +33,11 @@ const SendMessage = () => {
     setValue("");
   };
   return (
-    <div className="fixed bottom-0 w-full bg-slate-600 py-8 shadow-lg shadow-lg">
-      <form className="containerWrapper flex px-1" onSubmit={handleSubmit}>
+    <div className="fixed bottom-0 w-full bg-slate-600 py-4 shadow-lg shadow-lg">
+      <form
+        className="containerWrapper flex gap-1 px-1"
+        onSubmit={handleSubmit}
+      >
         <input
           className="input w-full rounded-lg bg-stone-100 text-slate-600 focus:outline-none"
           type="text"
@@ -42,7 +45,7 @@ const SendMessage = () => {
           onChange={(e) => setValue(e.target.value)}
         />
         <button
-          className="w-auto rounded-lg bg-[#242933] px-5 text-sm text-white"
+          className="w-auto rounded-lg bg-[#242933] px-5 text-sm text-white hover:scale-105"
           type="submit"
         >
           Send

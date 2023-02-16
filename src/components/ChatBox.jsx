@@ -38,7 +38,7 @@ const ChatBox = () => {
     return () => unsubscribe;
   }, []);
   return (
-    <div className="containerWrap pb-44 pt-20">
+    <div className="containerWrap break-all px-1 py-2">
       {messages.map((message) => (
         <Message message={message} key={message.id} />
       ))}
