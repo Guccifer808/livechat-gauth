@@ -1,9 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 
 const LoginPage = () => {
+  // Context
   const { currentUser, googleAuth } = UserAuth();
-
+  // for useEffect
+  const navigate = useNavigate();
+  // Button onClick
   const handleClick = async () => {
     try {
       await googleAuth();
@@ -11,6 +15,10 @@ const LoginPage = () => {
       console.log(error);
     }
   };
+  // Redirect to /chat if logged
+  useEffect(() => {
+    currentUser && navigate("/chat");
+  }, [currentUser]);
   return (
     <div
       className="hero min-h-screen"
