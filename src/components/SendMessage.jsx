@@ -1,10 +1,35 @@
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import React, { useState } from "react";
+import { UserAuth } from "../context/AuthContext";
+import { db } from "../firebase";
 
 const SendMessage = () => {
   const [value, setValue] = useState("");
+  // Getting currentUser to grab data for a chatbox
+  const { currentUser } = UserAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Prevent sengind an empty message
+    if (value.trim() === "") {
+      alert("Can't send an empty message");
+      return;
+    }
+
+    try {
+      const { uid, displayName, photoURL } = currentUser;
+      // https://firebase.google.com/docs/firestore/manage-data/add-data?hl=en&authuser=0#set_a_document
+      await addDoc(collection(db, "messages"), {
+        text: value,
+        name: displayName,
+        profilePic: photoURL,
+        uid,
+        createdAt: serverTimestamp(),
+      });
+    } catch (error) {
+      console.log(error);
+    }
     setValue("");
   };
   return (
