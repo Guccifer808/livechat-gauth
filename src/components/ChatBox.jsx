@@ -1,5 +1,11 @@
 import Message from "./Message";
-import { collection, query, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  query,
+  onSnapshot,
+  orderBy,
+  limit,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import { useEffect, useState } from "react";
 
@@ -8,7 +14,13 @@ const ChatBox = () => {
 
   // https://firebase.google.com/docs/firestore/query-data/listen?hl=en&authuser=0#listen_to_multiple_documents_in_a_collection
   useEffect(() => {
-    const q = query(collection(db, "messages"));
+    const q = query(
+      collection(db, "messages"),
+      // Order messages by date created
+      orderBy("CreatedAt"),
+      // Limiting chars
+      limit(200)
+    );
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const messages = [];
       querySnapshot.forEach((doc) => {
