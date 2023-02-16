@@ -1,10 +1,24 @@
-import React from "react";
+import { UserAuth } from "../context/AuthContext";
 
 const Navbar = () => {
+  const { currentUser, signout } = UserAuth();
+
+  //signout
+  const handleClick = async (event) => {
+    try {
+      await signout();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="containerWrapper navbar flex justify-between bg-base-100">
       <a className="btn-ghost btn text-xl normal-case">NightChat</a>
-      <button className="btn">Logout</button>
+      {currentUser ? (
+        <button className="btn" onClick={handleClick}>
+          Logout
+        </button>
+      ) : null}
     </div>
   );
 };
