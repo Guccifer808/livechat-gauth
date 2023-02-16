@@ -1,8 +1,10 @@
+import LoginPage from './pages/LoginPage';
+
 function App() {
   return (
-    <div className='App'>
-      <p className='tex-3xl'>APP</p>
-    </div>
+    <>
+      <LoginPage />
+    </>
   );
 }
 
