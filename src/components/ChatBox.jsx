@@ -17,7 +17,7 @@ const ChatBox = () => {
     const q = query(
       collection(db, "messages"),
       // Order messages by date created
-      orderBy("CreatedAt"),
+      orderBy("createdAt"),
       // Limiting chars
       limit(200)
     );
