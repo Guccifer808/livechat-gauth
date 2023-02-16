@@ -2,8 +2,15 @@ import React, { useContext } from "react";
 import { UserAuth } from "../context/AuthContext";
 
 const LoginPage = () => {
-  const { currentUser } = UserAuth();
-  console.log(currentUser);
+  const { currentUser, googleAuth } = UserAuth();
+
+  const handleClick = async () => {
+    try {
+      await googleAuth();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div
       className="hero min-h-screen"
@@ -19,7 +26,9 @@ const LoginPage = () => {
             Currently we support only Google authentication. Please login to
             join the conversations, find new friends and share ideas!
           </p>
-          <button className="btn-primary btn">Login with Google</button>
+          <button className="btn-primary btn" onClick={handleClick}>
+            Login with Google
+          </button>
         </div>
       </div>
     </div>
