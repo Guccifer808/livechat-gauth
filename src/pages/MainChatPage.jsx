@@ -1,7 +1,14 @@
-import React from 'react';
+import React from "react";
+import ChatBox from "../components/ChatBox";
+import SendMessage from "../components/SendMessage";
 
 const MainChatPage = () => {
-  return <div>MainChatPage</div>;
+  return (
+    <>
+      <ChatBox />
+      <SendMessage />
+    </>
+  );
 };
 
 export default MainChatPage;
