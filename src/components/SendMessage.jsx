@@ -5,7 +5,6 @@ const SendMessage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(value);
     setValue("");
   };
   return (
