@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const Navbar = () => {
   return (
-    <div className='navbar bg-base-100 flex justify-between'>
-      <a className='btn btn-ghost normal-case text-xl'>LiveChat</a>
-      <button className='btn'>Logout</button>
+    <div className="containerWrapper navbar flex justify-between bg-base-100">
+      <a className="btn-ghost btn text-xl normal-case">LiveChat</a>
+      <button className="btn">Logout</button>
     </div>
   );
 };
