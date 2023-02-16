@@ -12,6 +12,8 @@ const AuthContext = createContext();
 // Provider
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  // To prevent delay switch to chat after login
+  const [loading, setLoading] = useState(true);
 
   // Google Auth w popup
   const googleAuth = () => {
@@ -24,6 +26,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const userAuthData = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      setLoading(false);
     });
     return userAuthData;
   }, []);
@@ -34,7 +37,11 @@ export const AuthProvider = ({ children }) => {
     googleAuth,
     signout,
   };
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 };
 
 export const UserAuth = () => {
