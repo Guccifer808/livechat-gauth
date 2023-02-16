@@ -5,7 +5,7 @@ import SendMessage from "../components/SendMessage";
 const MainChatPage = () => {
   return (
     <div
-      className="bg-gradient-radial pb-20 pt-16"
+      className="min-h-[100vh] bg-gradient-radial pb-20 pt-16"
       style={{ backgroundSize: "5px 5px" }}
     >
       <ChatBox />

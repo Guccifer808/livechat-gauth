@@ -1,3 +1,4 @@
+import logo from "../assets/logo-nchat.png";
 import { UserAuth } from "../context/AuthContext";
 
 const Navbar = () => {
@@ -12,13 +13,16 @@ const Navbar = () => {
     }
   };
   return (
-    <div className="containerWrapper navbar fixed z-10 flex justify-between bg-base-100">
-      <a className="btn-ghost btn text-xl normal-case">NightChat</a>
-      {currentUser ? (
-        <button className="btn" onClick={handleClick}>
-          Logout
-        </button>
-      ) : null}
+    <div className="navbar fixed z-10 bg-base-100">
+      <div className="containerWrapper flex justify-between ">
+        {/* <a className="btn-ghost btn text-xl normal-case">NightChat</a> */}
+        <img src={logo} />
+        {currentUser ? (
+          <button className="btn" onClick={handleClick}>
+            Logout
+          </button>
+        ) : null}
+      </div>
     </div>
   );
 };
